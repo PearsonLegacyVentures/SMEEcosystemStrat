@@ -18,8 +18,15 @@ export default function About() {
           </div>
           <div className="rounded-3xl border border-border bg-muted p-8 md:p-10">
             <p className="text-sm font-semibold uppercase tracking-widest text-accent">Founder note</p>
-            <blockquote className="mt-4 text-2xl font-semibold leading-snug text-foreground">We believe many Caribbean businesses do not lack potential. They lack visibility, structure, and funder-ready information. This platform is being built to close that gap.</blockquote>
+            <blockquote className="mt-4 text-2xl font-semibold leading-snug text-foreground">Many Caribbean businesses do not lack potential. They lack visibility, structure, and funder-ready information. This platform is being developed to help close that gap.</blockquote>
           </div>
+        </div>
+      </Section>
+      <Section variant="muted">
+        <div className="mx-auto max-w-4xl rounded-3xl border border-border bg-card p-8 md:p-10">
+          <p className="text-eyebrow mb-4">Foundation</p>
+          <h2 className="text-headline">Why Bahamas AI Solutions is the foundation</h2>
+          <p className="mt-5 text-lg leading-relaxed text-muted-foreground">Bahamas AI Solutions already builds practical websites, web apps, and automations. Caribbean SME Readiness Platform turns those practical tools into a larger readiness system for SMEs, funders, governments, and partners.</p>
         </div>
       </Section>
     </PageLayout>

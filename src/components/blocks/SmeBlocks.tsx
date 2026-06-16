@@ -53,19 +53,36 @@ export function ChecklistPanel({ items }: { items: string[] }) {
 
 export function TrackRecord() {
   return (
-    <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-5">
-      {trackRecordProjects.map((project) => (
-        <a key={project.name} href={project.link} target={project.link.startsWith("http") ? "_blank" : undefined} rel="noreferrer" className="group flex min-h-60 flex-col justify-between rounded-2xl border border-border bg-card p-5 transition hover:-translate-y-1 hover:border-accent/60 hover:shadow-xl">
-          <div>
-            <div className="mb-5 h-24 rounded-xl border border-border bg-[linear-gradient(135deg,hsl(var(--muted)),hsl(var(--card)))] p-3">
-              <div className="h-full rounded-lg border border-dashed border-muted-foreground/30 bg-background/50" />
+    <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+      {trackRecordProjects.map((project) => {
+        const hasLink = project.link.startsWith("http");
+        const Card = (
+          <article className="group flex min-h-[28rem] flex-col justify-between rounded-2xl border border-border bg-card p-5 transition hover:-translate-y-1 hover:border-accent/60 hover:shadow-xl">
+            <div>
+              <div className="mb-5 rounded-xl border border-border bg-[linear-gradient(135deg,hsl(var(--muted)),hsl(var(--card)))] p-3">
+                <div className="flex h-28 items-end justify-between rounded-lg border border-dashed border-muted-foreground/30 bg-background/60 p-3">
+                  <span className="max-w-[9rem] text-xs font-semibold uppercase tracking-widest text-muted-foreground">{project.visual}</span>
+                  <span className="rounded-full bg-accent/15 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-accent">{project.status}</span>
+                </div>
+              </div>
+              <p className="text-xs font-semibold uppercase tracking-widest text-accent">{project.category}</p>
+              <h3 className="mt-3 text-lg font-semibold leading-tight">{project.name}</h3>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{project.description}</p>
             </div>
-            <h3 className="text-base font-semibold leading-tight">{project.name}</h3>
-            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{project.description}</p>
+            <span className="mt-6 text-sm font-semibold text-accent group-hover:text-foreground">{project.ctaLabel}</span>
+          </article>
+        );
+
+        return hasLink ? (
+          <a key={project.name} href={project.link} target="_blank" rel="noreferrer" className="block">
+            {Card}
+          </a>
+        ) : (
+          <div key={project.name} className="block" aria-label={`${project.name}: add real project link`}>
+            {Card}
           </div>
-          <span className="mt-5 text-sm font-semibold text-accent group-hover:text-foreground">{project.label}</span>
-        </a>
-      ))}
+        );
+      })}
     </div>
   );
 }

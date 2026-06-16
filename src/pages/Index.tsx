@@ -5,10 +5,11 @@ import { Section } from "@/components/layout/Section";
 import { PageLayout } from "@/components/layout/PageLayout";
 import { SectionHeading } from "@/components/blocks/SectionHeading";
 import { CardGrid, TrackRecord } from "@/components/blocks/SmeBlocks";
-import { audienceCards, overviewItems, problemCards } from "@/lib/platform-data";
+import { audienceCards, overviewItems, platformPreviewCards, problemCards } from "@/lib/platform-data";
 import { seo } from "@/lib/site-config";
 
-const platformCards = ["Business Profile", "Financial Snapshot", "Readiness Score", "Investor Report", "Data Room"];
+const platformCards = ["SME Profile", "Financial Snapshot", "Readiness Score", "Investor Report", "Data Room", "Dashboard"];
+const trustItems = ["Built from Bahamas AI Solutions", "Founder-led by Amar Pearson", "Practical websites, web apps, and automations", "Designed for Caribbean SMEs, funders, and development partners"];
 
 export default function Home() {
   return (
@@ -38,6 +39,16 @@ export default function Home() {
         </div>
       </section>
 
+      <Section className="py-8 md:py-10">
+        <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-4">
+          {trustItems.map((item) => (
+            <div key={item} className="rounded-2xl border border-border bg-card px-5 py-4 text-sm font-semibold text-foreground shadow-sm">
+              {item}
+            </div>
+          ))}
+        </div>
+      </Section>
+
       <Section>
         <SectionHeading heading="The problem is not only access to capital. It is readiness." description="Many Caribbean SMEs are real businesses with real potential, but they are hard to fund because their records, systems, and profiles are incomplete. Lenders cannot assess what they cannot see. Investors cannot trust what they cannot verify. Governments cannot support what they cannot measure." />
         <CardGrid items={problemCards} />
@@ -46,6 +57,20 @@ export default function Home() {
       <Section variant="muted">
         <SectionHeading heading="One platform for business identity and investment readiness." />
         <CardGrid items={overviewItems} />
+      </Section>
+
+      <Section>
+        <SectionHeading heading="See what the workspace could include." description="A simple preview of the tools SMEs would use to organize their profile, records, reports, and funding materials." />
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {platformPreviewCards.map((card, index) => (
+            <Link key={card.id} to={`/platform#${card.id}`} className="group rounded-2xl border border-border bg-card p-6 shadow-sm transition hover:-translate-y-1 hover:border-accent/60 hover:shadow-xl">
+              <span className="text-xs font-semibold uppercase tracking-widest text-accent">Preview 0{index + 1}</span>
+              <h3 className="mt-4 text-xl font-semibold">{card.title}</h3>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">Open the visual preview on the platform page.</p>
+              <span className="mt-6 inline-flex text-sm font-semibold text-accent group-hover:text-foreground">View preview</span>
+            </Link>
+          ))}
+        </div>
       </Section>
 
       <Section>

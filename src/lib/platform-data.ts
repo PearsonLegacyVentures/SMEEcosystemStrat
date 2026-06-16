@@ -18,6 +18,15 @@ import {
   Users,
 } from "lucide-react";
 
+export const platformPreviewCards = [
+  { id: "sme-profile", title: "SME Profile", what: "A business owner sees a clean profile with company details, services, contacts, compliance notes, and operating links in one place.", why: "It gives reviewers a consistent view of the business before asking for more information.", output: "A shareable SME profile that can be kept current as the business grows." },
+  { id: "financial-snapshot", title: "Financial Snapshot", what: "A simple summary of income, expenses, records, and financial documents that still need attention.", why: "It helps owners and reviewers understand the current record position without sorting through scattered files first.", output: "A cleaner financial summary for funding conversations and advisor review." },
+  { id: "readiness-score", title: "Readiness Score", what: "A preparation view showing what is complete, what is missing, and what should be improved before review.", why: "This is not a credit score and does not guarantee funding. It is a preparation indicator that helps businesses and reviewers understand what is complete and what still needs work.", output: "A practical readiness summary with next steps for the SME." },
+  { id: "investor-report", title: "Investor Report", what: "A concise report view combining profile details, financial summaries, forecasts, and supporting notes.", why: "It reduces confusion by giving funders and partners a clearer first review package.", output: "A funder-ready report that can support lender, investor, grant, or partner discussions." },
+  { id: "data-room", title: "Data Room", what: "A structured list of approved documents, grouped by registration, financials, compliance, plans, and reports.", why: "Due diligence is easier when records are organized, labeled, and shared with the right reviewers only.", output: "A permission-based data room for approved reviewers." },
+  { id: "dashboard", title: "Dashboard", what: "A status view showing profile progress, record gaps, report readiness, and review tasks.", why: "It helps SMEs stay organized and gives advisors a clearer view of what needs attention.", output: "A simple readiness dashboard for owners, advisors, and approved partners." },
+];
+
 export const platformModules = [
   {
     icon: BriefcaseBusiness,
@@ -97,33 +106,39 @@ export const overviewItems = [
 export const trackRecordProjects = [
   {
     name: "Bahamas AI Solutions",
+    category: "Company foundation",
     description: "Founder-led practical website, web app, and automation work for Caribbean businesses.",
+    status: "Live public site",
     link: "https://bahamasaisolutions.com",
-    label: "Visit site",
+    visual: "Company foundation",
+    ctaLabel: "Visit site",
   },
   {
-    name: "Business Website Builds",
-    description: "Add real project link. Use this card for a verified website build when a public link is ready.",
-    link: "#",
-    label: "Add real project link",
+    name: "Tranquilitas Spa Booking Systems",
+    category: "Booking + payments",
+    description: "Booking and payment workflows for a real Caribbean service business.",
+    status: "Add real project link",
+    link: "",
+    visual: "Booking workflow",
+    ctaLabel: "Add real project link",
   },
   {
-    name: "Booking System Builds",
-    description: "Add real project link. Use this card for a verified booking workflow when approved for display.",
-    link: "#",
-    label: "Add real project link",
+    name: "Massage Bahamas / Regional Mobile Massage Web Presence",
+    category: "Website + service platform",
+    description: "Public-facing service pages and booking flows for mobile wellness services across multiple Caribbean markets.",
+    status: "Add real project link",
+    link: "",
+    visual: "Service platform",
+    ctaLabel: "Add real project link",
   },
   {
-    name: "Payment Workflow Builds",
-    description: "Add real project link. Use this card for a verified payment workflow when approved for display.",
-    link: "#",
-    label: "Add real project link",
-  },
-  {
-    name: "Dashboard / Automation Builds",
-    description: "Add real project link. Use this card for a verified dashboard or automation build when approved for display.",
-    link: "#",
-    label: "Add real project link",
+    name: "Business Dashboard / Automation Builds",
+    category: "Internal systems",
+    description: "Practical dashboards and workflows built to help operators manage requests, bookings, reporting, and follow-up.",
+    status: "Add real project link",
+    link: "",
+    visual: "Internal systems",
+    ctaLabel: "Add real project link",
   },
 ];
 

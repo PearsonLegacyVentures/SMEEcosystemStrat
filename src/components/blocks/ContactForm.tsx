@@ -1,8 +1,10 @@
+import { useState, type FormEvent } from "react";
 import { Section } from "@/components/layout/Section";
 import { SectionHeading } from "./SectionHeading";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { siteConfig } from "@/lib/site-config";
 
 interface ContactFormProps {
   eyebrow?: string;
@@ -11,6 +13,12 @@ interface ContactFormProps {
 }
 
 export function ContactForm({ eyebrow, heading, description }: ContactFormProps) {
+  const [submitted, setSubmitted] = useState(false);
+  const onSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setSubmitted(true);
+  };
+
   return (
     <Section>
       <div className="grid gap-12 lg:grid-cols-2">
@@ -18,45 +26,42 @@ export function ContactForm({ eyebrow, heading, description }: ContactFormProps)
           <SectionHeading eyebrow={eyebrow} heading={heading} description={description} align="left" className="mb-8" />
           <div className="space-y-6">
             <div>
-              <h4 className="text-sm font-semibold mb-1">Email</h4>
-              <p className="text-sm text-muted-foreground">hello@example.com</p>
+              <h4 className="mb-1 text-sm font-semibold">Email</h4>
+              <p className="text-sm text-muted-foreground">{siteConfig.contactEmail}</p>
             </div>
             <div>
-              <h4 className="text-sm font-semibold mb-1">Phone</h4>
-              <p className="text-sm text-muted-foreground">+1 (555) 000-0000</p>
-            </div>
-            <div>
-              <h4 className="text-sm font-semibold mb-1">Office</h4>
-              <p className="text-sm text-muted-foreground">123 Main Street, Suite 100<br />New York, NY 10001</p>
+              <h4 className="mb-1 text-sm font-semibold">Built from</h4>
+              <p className="text-sm text-muted-foreground">Bahamas AI Solutions</p>
             </div>
           </div>
         </div>
 
-        <form className="space-y-5" onSubmit={(e) => e.preventDefault()}>
-          <div className="grid gap-5 sm:grid-cols-2">
+        {submitted ? (
+          <div className="rounded-2xl bg-muted p-8 text-center">
+            <h3 className="text-2xl font-semibold">Thank you.</h3>
+            <p className="mt-3 text-muted-foreground">Your request has been received. We will review it and follow up.</p>
+          </div>
+        ) : (
+          <form className="space-y-5" onSubmit={onSubmit}>
             <div>
-              <label htmlFor="firstName" className="text-sm font-medium mb-1.5 block">First name</label>
-              <Input id="firstName" placeholder="Jane" />
+              <label htmlFor="name" className="mb-1.5 block text-sm font-medium">Full name</label>
+              <Input id="name" placeholder="Your name" />
             </div>
             <div>
-              <label htmlFor="lastName" className="text-sm font-medium mb-1.5 block">Last name</label>
-              <Input id="lastName" placeholder="Smith" />
+              <label htmlFor="email" className="mb-1.5 block text-sm font-medium">Email</label>
+              <Input id="email" type="email" placeholder="you@company.com" />
             </div>
-          </div>
-          <div>
-            <label htmlFor="email" className="text-sm font-medium mb-1.5 block">Email</label>
-            <Input id="email" type="email" placeholder="jane@example.com" />
-          </div>
-          <div>
-            <label htmlFor="company" className="text-sm font-medium mb-1.5 block">Company</label>
-            <Input id="company" placeholder="Acme Inc." />
-          </div>
-          <div>
-            <label htmlFor="message" className="text-sm font-medium mb-1.5 block">Message</label>
-            <Textarea id="message" placeholder="Tell us about your project..." rows={5} />
-          </div>
-          <Button variant="hero" type="submit" className="w-full sm:w-auto">Send Message</Button>
-        </form>
+            <div>
+              <label htmlFor="company" className="mb-1.5 block text-sm font-medium">Business / organization</label>
+              <Input id="company" placeholder="Your business or organization" />
+            </div>
+            <div>
+              <label htmlFor="message" className="mb-1.5 block text-sm font-medium">Message</label>
+              <Textarea id="message" placeholder="Tell us what you are trying to prepare, review, or support." rows={5} />
+            </div>
+            <Button variant="hero" type="submit" className="w-full sm:w-auto">Request Access</Button>
+          </form>
+        )}
       </div>
     </Section>
   );
